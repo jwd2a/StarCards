@@ -44,9 +44,10 @@
     var rowCounter = 0;
     shuffledArray.forEach(function(person) {
       if (cardCounter == 0) {
+        console.log("GO FORTH AND APPEND!");
         $("#cards").append("<div class='row' id='row-" + rowCounter + "'>");
       }
-      $("#row-" + rowCounter).append("<div class='col-md-2 col-lg-2 card' data-itemId='" + person.name + "'>Back of card</div>");
+      $("#row-" + rowCounter).append(buildSingleCard(person));
       cardCounter++;
       if (cardCounter == 6) {
         $("#row-" + rowCounter).append("</div>");
@@ -54,6 +55,11 @@
         rowCounter++;
       }
     });
+  }
+
+
+  function buildSingleCard(character){
+    return '<div class="col-lg-2"><div class="card-container"><div class="card"><div class="back"><div class="cover"><img src="luke.jpg" /></div><div class="user"><img class="img-circle" src="luke.jpg" /></div><div class="content"><div class="main"><h3 class="name">'+character.name+'</h3><p class="hairColor">'+character.hair_color+'</p></div></div></div><!-- end front panel --><div class="front"><div class="header"><h5 class="motto">"To be or not to be, this is my awesome motto!"</h5></div><div class="content"><div class="main"><h4 class="text-center">Experience</h4><p>Luke took over the universe.</p></div></div></div><!-- end back panel --></div><!-- end card --></div><!-- end card-container --></div>';
   }
 
 })();
