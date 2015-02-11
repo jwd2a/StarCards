@@ -1,0 +1,6 @@
+/*Just for presentation of clicked
+=======================
+*/
+.active {
+  border: 1px solid red;
+}
