@@ -70,14 +70,12 @@ $(function() {
   // This simple function just returns a string of HTML with our card's details inserted into it. It's used by the buildCards function to insert the HTML into the page. 
 
   function buildSingleCard(character) {
-    return '<div class="col-lg-2"><div class="card-container game-card" data-name="' + character.name + '""><div class="card clicked"><div class="back"><div class="cover"><img src="luke.jpg" /></div><div class="user"><img class="img-circle" src="luke.jpg" /></div><div class="content"><div class="main"><h3 class="name">' + character.name + '</h3><p class="hairColor">' + character.hair_color + '</p></div></div></div><!-- end front panel --><div class="front"><div class="header"><h5 class="motto">"To be or not to be, this is my awesome motto!"</h5></div><div class="content"><div class="main"><h4 class="text-center">Experience</h4><p>Luke took over the universe.</p></div></div></div><!-- end back panel --></div><!-- end card --></div><!-- end card-container --></div>';
+    return '<div class="col-lg-2"><div class="card-container game-card""><div class="card" data-name="' + character.name + '"><div class="back"><div class="cover"><img src="luke.jpg" /></div><div class="user"><img class="img-circle" src="luke.jpg" /></div><div class="content"><div class="main"><h3 class="name">' + character.name + '</h3><p class="hairColor">' + character.hair_color + '</p></div></div></div><!-- end front panel --><div class="front"><div class="header"><h5 class="motto">"To be or not to be, this is my awesome motto!"</h5></div><div class="content"><div class="main"><h4 class="text-center">Experience</h4><p>Luke took over the universe.</p></div></div></div><!-- end back panel --></div><!-- end card --></div><!-- end card-container --></div>';
   }
 
   // Creating flipCard function
 
   function flipCard(){
-    
-   $(this).toggleClass("flipped");
   }
 
   // Because we need to have all the cards on the page before we can attach event listeners to them, this function is called once the game board is set up. It's a good idea to separate this, as we might want to do other setup work at the beginning before the user starts playing. By making this its own function, we're able to better control when the user can start playing the game. 
@@ -85,9 +83,10 @@ $(function() {
   function startGame() {
 
     // Attach event listeners to all our game pieces, listening for them to be clicked.
-    $(".game-card .card").click(function() {
+    $(".card").click(function() {
+     $(this).toggleClass("flipped");
       /* TODO: @mike - this is where the card should flip over. Probably just need to add a class to it here. Stubbed that out below: */
-      flipCard(this);
+      //flipCard(this);
       // Store the currently clicked card into a variable, and then add the class "active" to it, so we can keep track of which ones have been clicked, and add styles to it.
       var selectedCard = $(this);
           selectedCard.addClass("active");
@@ -113,7 +112,9 @@ $(function() {
       $(this).addClass("match");
     });
     incrementScore();
-    cleanUp();
+    setTimeout(function(){
+      cleanUp();
+    }, 1000);
   }
 
   // incrementScore is used to keep track of our score and update the HTML with it
@@ -127,18 +128,20 @@ $(function() {
 
   function showIncorrect(cards) {
     //make the cards blink or something
-    alert("incorrect match");
-    cleanUp();
+    setTimeout(function(){
+      cleanUp();
+    }, 1000);
   }
 
   // After two cards have been selected, whether matched or not, we need to wipe out any "active" cards, so we have an accurate count of which ones have been clicked on. This will also let us flip the clicked cards back over if we need to.
 
   function cleanUp(){
-    $(":not(.match)").each(function(){
-      $(this).removeClass("active");
+    $("div:not(.match).active").each(function(){
+      console.log("cleaning up the shit");
       // TODO: @mike - remove the class for flipping the card (or however we flip them back over) here:
-      flipcard(this);
+      $(this).toggleClass("flipped");
     });
+    $(".active").removeClass("active");
   }
 
   // Bind to start button to allow the user to start the game
@@ -151,6 +154,5 @@ $(function() {
   // Show the Start Modal
 
   $("#startModal").modal('show');
-
 
 });
