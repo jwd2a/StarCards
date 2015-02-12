@@ -73,11 +73,6 @@ $(function() {
     return '<div class="col-lg-2"><div class="card-container game-card""><div class="card" data-name="' + character.name + '"><div class="back"><div class="cover"><img src="luke.jpg" /></div><div class="user"><img class="img-circle" src="luke.jpg" /></div><div class="content"><div class="main"><h3 class="name">' + character.name + '</h3><p class="hairColor">' + character.hair_color + '</p></div></div></div><!-- end front panel --><div class="front"><div class="header"><h5 class="motto">"To be or not to be, this is my awesome motto!"</h5></div><div class="content"><div class="main"><h4 class="text-center">Experience</h4><p>Luke took over the universe.</p></div></div></div><!-- end back panel --></div><!-- end card --></div><!-- end card-container --></div>';
   }
 
-  // Creating flipCard function
-
-  function flipCard(){
-  }
-
   // Because we need to have all the cards on the page before we can attach event listeners to them, this function is called once the game board is set up. It's a good idea to separate this, as we might want to do other setup work at the beginning before the user starts playing. By making this its own function, we're able to better control when the user can start playing the game. 
 
   function startGame() {
@@ -85,8 +80,6 @@ $(function() {
     // Attach event listeners to all our game pieces, listening for them to be clicked.
     $(".card").click(function() {
      $(this).toggleClass("flipped");
-      /* TODO: @mike - this is where the card should flip over. Probably just need to add a class to it here. Stubbed that out below: */
-      //flipCard(this);
       // Store the currently clicked card into a variable, and then add the class "active" to it, so we can keep track of which ones have been clicked, and add styles to it.
       var selectedCard = $(this);
           selectedCard.addClass("active");
@@ -138,11 +131,16 @@ $(function() {
   function cleanUp(){
     $("div:not(.match).active").each(function(){
       console.log("cleaning up the shit");
-      // TODO: @mike - remove the class for flipping the card (or however we flip them back over) here:
       $(this).toggleClass("flipped");
     });
     $(".active").removeClass("active");
   }
+
+  // Tie our clock start to clicking the start of our modal button
+
+      $("#startGame").on("click",function(){
+        $('#timer').tinyTimer({ from: Date.now() });
+      });
 
   // Bind to start button to allow the user to start the game
 
