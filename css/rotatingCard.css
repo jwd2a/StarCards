@@ -19,13 +19,13 @@
 
 */
 
-.clicked{
+.card-container .card.flipped , .card-container .card.flipped {
     -webkit-transform: rotateY( 180deg);
     -moz-transform: rotateY( 180deg);
     -o-transform: rotateY( 180deg);
     transform: rotateY( 180deg);
 }
-.card-container.static:hover .card, .card-container.static.hover .card {
+.card-container.static .card.flipped, .card-container.static .card.flipped {
     -webkit-transform: none;
     -moz-transform: none;
     -o-transform: none;
@@ -155,7 +155,7 @@
  */
 
 .back {
-    -webkit-transform: rotateY( 180deg);
+    -webkit-transform: rotateY( s180deg);
     -moz-transform: rotateY( 180deg);
     -o-transform: rotateY( 180deg);
     transform: rotateY( 180deg);
@@ -370,7 +370,7 @@ pre.prettyprint {
 /*Fix bug for IE
 ======================
 
-*/
+      */
 
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
     .front, .back {

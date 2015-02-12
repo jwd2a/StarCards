@@ -74,14 +74,21 @@ $(function() {
     return '<div class="col-lg-2"><div class="card-container game-card" data-name="' + character.name + '""><div class="card clicked"><div class="back"><div class="cover"><img src="luke.jpg" /></div><div class="user"><img class="img-circle" src="luke.jpg" /></div><div class="content"><div class="main"><h3 class="name">' + character.name + '</h3><p class="hairColor">' + character.hair_color + '</p></div></div></div><!-- end front panel --><div class="front"><div class="header"><h5 class="motto">"To be or not to be, this is my awesome motto!"</h5></div><div class="content"><div class="main"><h4 class="text-center">Experience</h4><p>Luke took over the universe.</p></div></div></div><!-- end back panel --></div><!-- end card --></div><!-- end card-container --></div>';
   }
 
+  // Creating flipCard function
+
+  function flipCard(){
+    
+   $(this).toggleClass("flipped");
+  }
+
   // Because we need to have all the cards on the page before we can attach event listeners to them, this function is called once the game board is set up. It's a good idea to separate this, as we might want to do other setup work at the beginning before the user starts playing. By making this its own function, we're able to better control when the user can start playing the game. 
 
   function startGame() {
 
     // Attach event listeners to all our game pieces, listening for them to be clicked.
-    $(".game-card").click(function() {
+    $(".game-card .card").click(function() {
       /* TODO: @mike - this is where the card should flip over. Probably just need to add a class to it here. Stubbed that out below: */
-      $(this).addClass("clicked");
+      flipCard(this);
       // Store the currently clicked card into a variable, and then add the class "active" to it, so we can keep track of which ones have been clicked, and add styles to it.
       var selectedCard = $(this);
           selectedCard.addClass("active");
@@ -128,10 +135,10 @@ $(function() {
   // After two cards have been selected, whether matched or not, we need to wipe out any "active" cards, so we have an accurate count of which ones have been clicked on. This will also let us flip the clicked cards back over if we need to.
 
   function cleanUp(){
-    $(".game-card").each(function(){
+    $(":not(.match)").each(function(){
       $(this).removeClass("active");
       // TODO: @mike - remove the class for flipping the card (or however we flip them back over) here:
-      $(this).removeClass("clicked");
+      flipcard(this);
     });
   }
 
