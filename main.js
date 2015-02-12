@@ -1,6 +1,6 @@
 $(function() {
 
-  // Set up some configuration variables. These are variables we'll need globally later, so it's a good practice to go ahead and get them defined up here. We've created one to keep track of the number of cards needed for a match (2), and the current score (0); 
+  // Set up some configuration variables. These are variables we'll need globally later, so it's a good practice to go ahead and get them defined up here (be careful with global variables though, use them sparingly!). We've created one to keep track of the number of cards needed for a match (2), and the current score (0); 
 
   var numMatches = 2;
   var score = 0;
@@ -64,7 +64,6 @@ $(function() {
         rowCounter++;
       }
     });
-    startGame();
   }
 
 
@@ -134,6 +133,17 @@ $(function() {
       $(this).removeClass("");
     });
   }
+
+  // Bind to start button to allow the user to start the game
+
+  $("#startGame").click(function(){
+    $("#startModal").modal('hide');
+    startGame();
+  });
+
+  // Show the Start Modal
+
+  $("#startModal").modal('show');
 
 
 });
