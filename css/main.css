@@ -2,10 +2,6 @@
 =======================
 */
 
-@font-face {
-  font-family: "Star_Jedi_Rounded";
-  src: url("../fonts/Star_Jedi_Rounded.ttf") format('truetype');
-}
 
 *{
 	color:white;
@@ -17,5 +13,8 @@ body {
 }
 
 #gameTitle {
-  font-family: "Star_Jedi_Rounded";
+  font-family: "Anton";
+  text-align: center;
+  color: #fff;
+  font-size: 3em;
 }
