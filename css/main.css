@@ -1,15 +1,11 @@
 /*Just for presentation of clicked
 =======================
 */
-
-
 *{
 	color:white;
 }
-
 body {
-  background-color: #003f52;
-  background-image: url(http://www.transparenttextures.com/patterns/felt.png);
+  background: #003f52 url('http://www.transparenttextures.com/patterns/felt.png') repeat;
 }
 
 #gameTitle {
