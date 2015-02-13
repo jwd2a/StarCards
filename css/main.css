@@ -14,3 +14,7 @@ body {
   color: #fff;
   font-size: 3em;
 }
+
+.modal-title,.modal-body,.modal-footer{
+	color:black;
+}
