@@ -1,0 +1,6 @@
+when a card is clicked
+  if the card is not active and there are 1 or 0 other active cards
+    mark the card as active and flip it over
+  else if the card is active
+    remove the active class and flip it back over
+
