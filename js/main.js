@@ -136,15 +136,10 @@ $(function() {
     $(".active").removeClass("active");
   }
 
-  // Tie our clock start to clicking the start of our modal button
-
-      $("#startGame").on("click",function(){
-        $('#timer').tinyTimer({ from: Date.now() });
-      });
-
   // Bind to start button to allow the user to start the game
 
   $("#startGame").click(function(){
+    $('#timer').tinyTimer({ from: Date.now() });
     $("#startModal").modal('hide');
     startGame();
   });
