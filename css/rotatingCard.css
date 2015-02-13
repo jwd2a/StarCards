@@ -133,6 +133,9 @@
 */
 .front {
     z-index: 2;
+    background:url('../cardback.gif') repeat center;
+    width: 100px;
+    height: 100px;
 }
 /* back, initially hidden pane
 ==============================
