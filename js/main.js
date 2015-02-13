@@ -79,12 +79,16 @@ $(function() {
 
     // Attach event listeners to all our game pieces, listening for them to be clicked.
     $(".card").click(function() {
-     $(this).toggleClass("flipped");
-      // Store the currently clicked card into a variable, and then add the class "active" to it, so we can keep track of which ones have been clicked, and add styles to it.
-      var selectedCard = $(this);
-          selectedCard.addClass("active");
+
+      if ($(".active").length < 2){
+        console.log("yes");
+        $(this).toggleClass("active");
+        $(this).toggleClass("flipped");
+      }
+
       // Grab all the cards on the board that are marked as "active", so we know how many have been clicked.
       var activeCards = $(".active");
+      
       // If we have two cards selected, we can now test to see if they match, using the data-name attribute to check for a match.
       if (activeCards.length == 2) {
         if ($(activeCards[0]).attr("data-name") == $(activeCards[1]).attr("data-name")) {
@@ -99,13 +103,13 @@ $(function() {
   }
 
   // This function is used to do whatever we need to when a match occurs. We pass it an array of the two matching cards, so we can loop over them and do whatever we need to do. In this case, we're simply adding a "match" class to them, so we can style them differently and keep them flipped over. Lastly, we call our incrementScore function and our cleanUp function to complete the job.
- 
+
   function createMatch(cards) {
     $(cards).each(function() {
       $(this).addClass("match");
     });
     incrementScore();
-    setTimeout(function(){
+    setTimeout(function() {
       cleanUp();
     }, 1000);
   }
@@ -121,15 +125,15 @@ $(function() {
 
   function showIncorrect(cards) {
     //make the cards blink or something
-    setTimeout(function(){
+    setTimeout(function() {
       cleanUp();
     }, 1000);
   }
 
   // After two cards have been selected, whether matched or not, we need to wipe out any "active" cards, so we have an accurate count of which ones have been clicked on. This will also let us flip the clicked cards back over if we need to.
 
-  function cleanUp(){
-    $("div:not(.match).active").each(function(){
+  function cleanUp() {
+    $("div:not(.match).active").each(function() {
       console.log("cleaning up the shit");
       $(this).toggleClass("flipped");
     });
@@ -138,8 +142,10 @@ $(function() {
 
   // Bind to start button to allow the user to start the game
 
-  $("#startGame").click(function(){
-    $('#timer').tinyTimer({ from: Date.now() });
+  $("#startGame").click(function() {
+    $('#timer').tinyTimer({
+      from: Date.now()
+    });
     $("#startModal").modal('hide');
     startGame();
   });
