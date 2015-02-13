@@ -5,6 +5,8 @@
     <title>StarCards</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/rotatingCard.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
@@ -33,24 +35,18 @@
     <div class="container" id="cards">
 
         <div class="row">
-            <h1 id="gameTitle">StarCards</h1>
-            <div class="col-md-4 col-lg-4">
-                <!-- setting up scores here -->
-                <p>Correct Matches:<span id="correctMatches">0</span>
-                </p>
+            <div class="col-md-3">
+                <i class="fa fa-smile-o"></i><span id="correctMatches">0</span>
+                <i class="fa fa-frown-o"></i><span id="incorrectMatches">0</span>
             </div>
-
-            <div class="col-md-4 col-lg-4">
-                <!-- setting up scores here -->
-                <p>Incorrect Matches:<span id="incorrectMatches">0</span>
-                </p>
+            <div class="col-md-6">
+                <h1 id="gameTitle">StarCards</h1>
+                <p>Flip over cards to find the ones that match!</p>
             </div>
-
-            <div class="col-md-4 col-lg-4">
+            <div class="col-md-3">
                 <p>Time:<span id="timer"></span>
                 </p>
             </div>
-
         </div>
 
     </div>
