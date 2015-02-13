@@ -1,3 +1,17 @@
 /*Just for presentation of clicked
 =======================
 */
+
+@font-face {
+  font-family: "Star_Jedi_Rounded";
+  src: url("../fonts/Star_Jedi_Rounded.ttf") format('truetype');
+}
+
+body {
+  background-color: #003f52;
+  background-image: url(http://www.transparenttextures.com/patterns/felt.png);
+}
+
+#gameTitle {
+  font-family: "Star_Jedi_Rounded";
+}
