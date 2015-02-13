@@ -3,6 +3,7 @@ $(function() {
   // Set up some configuration variables. These are variables we'll need globally later, so it's a good practice to go ahead and get them defined up here (be careful with global variables though, use them sparingly!). We've created one to keep track of the number of cards needed for a match (2), and the current score (0); 
 
   var numMatches = 2;
+  var numIncorrectMatches = 0;
   var score = 0;
 
   //TODO: make number of cards/pages recieved dynamic
@@ -118,13 +119,15 @@ $(function() {
 
   function incrementScore() {
     score = score + 1;
-    $("#score").html(score);
+    $("#correctMatches").html(score);
   }
 
   // If we have an incorrect match, do something here. 
 
   function showIncorrect(cards) {
     //make the cards blink or something
+    numIncorrectMatches++;
+    $("#incorrectMatches").html(numIncorrectMatches);
     setTimeout(function() {
       cleanUp();
     }, 1000);
